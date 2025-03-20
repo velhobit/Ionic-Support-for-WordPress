@@ -1,0 +1,20 @@
+<ion-content mode="ios" [fullscreen]="true">
+  <ion-grid fixed="true">
+    <ion-row>
+      <ion-col class="ion-padding-start">
+        <h2 class="ion-no-margin">Categorias</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list [inset]="true" lines="full" detail="true">
+          <ng-template ngFor let-item [ngForOf]="mainMenu.items">
+            <ion-item [button]="true" (click)="goTo(item.url)">
+              <ion-label>{{ item.title }}</ion-label>
+            </ion-item>
+          </ng-template>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

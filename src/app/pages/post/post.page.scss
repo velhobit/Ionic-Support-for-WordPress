@@ -1,0 +1,59 @@
+.post {
+  max-width: 640px;
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  time {
+    display: block;
+  }
+
+  .content {
+    ::ng-deep {
+      h2 {
+        font-size: 1.21rem;
+        margin-top: 1.68em;
+      }
+      h3 {
+        font-size: 1.1rem;
+      }
+
+      p {
+        font-size: 0.96rem;
+        line-height: 1.42rem;
+        font-weight: 400;
+        letter-spacing: -0.016em;
+        margin: 0;
+        margin-bottom: 0.5em;
+      }
+      img,
+      figure {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+
+      figure {
+        margin-bottom: 1em;
+      }
+
+      .videoWrapper,
+      .wp-block-embed-youtube .wp-block-embed__wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 25px;
+        height: 0;
+        iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}

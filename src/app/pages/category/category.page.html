@@ -1,0 +1,108 @@
+<ion-content mode="ios" [fullscreen]="true">
+  <ion-grid fixed="true">
+    <ion-row>
+      <ion-col class="ion-padding-start">
+        <ion-skeleton-text
+          *ngIf="loading"
+          [animated]="true"
+          style="width: 50%; height: 30px"
+        ></ion-skeleton-text>
+        <h2 *ngIf="!loading" class="ion-no-margin">{{cat_name}}</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="loading">
+      <ion-col
+        class="ion-padding flex-vertical"
+        size="6"
+        size-md="6"
+        size-lg="4"
+        size-xl="3"
+      >
+        <ion-card class="ion-no-margin flex-vertical">
+          <ion-card-content class="thumbnail ion-no-margin">
+            <ion-skeleton-text
+              [animated]="true"
+              style="width: 100%; height: 100px"
+            ></ion-skeleton-text>
+          </ion-card-content>
+          <ion-card-header class="flex">
+            <div>
+              <ion-skeleton-text
+                [animated]="true"
+                style="width: 50%; height: 0.85"
+              ></ion-skeleton-text>
+            </div>
+            <ion-card-subtitle>
+              <ion-skeleton-text
+                [animated]="true"
+                style="width: 50%; height: 1em"
+              ></ion-skeleton-text
+            ></ion-card-subtitle>
+            <div class="flex"></div>
+            <ion-card-title>
+              <ion-skeleton-text
+                [animated]="true"
+                style="width: 100%; height: 1em"
+              ></ion-skeleton-text>
+              <ion-skeleton-text
+                [animated]="true"
+                style="width: 50%; height: 1em"
+              ></ion-skeleton-text>
+            </ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!loading && !posts.length">
+      <ion-col>
+        <h4>Não foram encontrados posts nesta categoria.</h4>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="posts.length">
+      <ion-col
+        class="ion-padding flex-vertical"
+        size="6"
+        size-md="6"
+        size-lg="4"
+        size-xl="3"
+        *ngFor="let post of posts"
+      >
+        <ion-card
+          class="ion-no-margin flex-vertical"
+          [routerLink]="'/post/' + post?.categories[0]?.slug + '/' + post?.slug"
+          aria-label="Navegar para o post {{ post?.title }}"
+        >
+          <ion-card-content class="thumbnail ion-no-margin">
+            <ion-skeleton-text
+              *ngIf="!post?.title?.length"
+              [animated]="true"
+              style="width: 100%; height: 100px"
+            ></ion-skeleton-text>
+            <img
+              *ngIf="post?.thumbnail?.url?.length"
+              [src]="post.thumbnail?.url"
+              [alt]="post.title"
+            />
+          </ion-card-content>
+          <ion-card-header class="flex" *ngIf="post?.categories">
+            <div *ngIf="post?.categories">
+              <a
+                class="category"
+                role="button"
+                *ngFor="let cat of post?.categories"
+                [href]="'category/' + cat?.slug"
+                >{{ cat?.name }}</a
+              >
+            </div>
+            <ion-card-subtitle *ngIf="post?.date_info"
+              ><ion-icon name="calendar"></ion-icon> {{ post.updated_date
+              }}</ion-card-subtitle
+            >
+            <div class="flex"></div>
+            <ion-card-title [innerHTML]="post.title"></ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

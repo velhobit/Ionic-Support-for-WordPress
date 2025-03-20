@@ -1,2 +1,15 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+:root {
+  --ion-background-color: #f5f5f7;
+  --ion-color-white: #ffffff;
+  --swiper-theme-color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: #000000e0;
+    --ion-color-white: #000000;
+    --swiper-theme-color: #000000;
+  }
+}

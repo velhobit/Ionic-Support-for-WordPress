@@ -1,1 +1,7 @@
-
+ion-tabs {
+  ::ng-deep {
+    .ion-page {
+      padding-top: 3.7em;
+    }
+  }
+}

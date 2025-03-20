@@ -1,0 +1,30 @@
+.banners {
+  swiper-container {
+    overflow: hidden;
+    border-radius: 1em;
+    swiper-slide {
+      position: relative;
+      .title-container {
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 50%;
+        backdrop-filter: blur(10px);
+        background: rgb(0, 0, 0);
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.5) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        border-radius: 0 0 1em 1em;
+        ion-title {
+          font-size: 1.2em;
+          text-shadow: 2px 2px 5px black;
+          color: white;
+        }
+      }
+    }
+  }
+}

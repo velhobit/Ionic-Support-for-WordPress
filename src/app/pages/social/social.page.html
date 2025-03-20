@@ -1,0 +1,28 @@
+<ion-content mode="ios" [fullscreen]="true">
+  <ion-grid fixed="true">
+    <ion-row>
+      <ion-col class="ion-padding-start">
+        <h2 class="ion-no-margin">Mídias Sociais</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list [inset]="true" lines="full" detail="true" *ngIf="social">
+          <ng-template ngFor let-item [ngForOf]="social">
+            <ion-item [button]="true" (click)="goTo(item.url)">
+              <i [attr.class]="item.icon" slot="start"></i>
+              <ion-label>{{ item.name }}</ion-label>
+            </ion-item>
+          </ng-template>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>

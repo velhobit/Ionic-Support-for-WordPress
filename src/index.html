@@ -1,26 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
 
-<head>
-  <meta charset="utf-8" />
-  <title>Ionic App</title>
+    <base href="/" />
 
-  <base href="/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
 
-  <meta name="color-scheme" content="light dark" />
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="msapplication-tap-highlight" content="no" />
+    <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
 
-  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+    <!-- add to homescreen for ios -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-  <!-- add to homescreen for ios -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-</head>
+    <!--google-->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5408700578731984"
+      crossorigin="anonymous"
+    ></script>
 
-<body>
-  <app-root></app-root>
-</body>
+    <!--meta-->
+    <!-- meta.php -->
 
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="<?php echo htmlspecialchars($og_title); ?>"
+    />
+    <meta
+      property="og:description"
+      content="<?php echo htmlspecialchars($og_description); ?>"
+    />
+    <meta
+      property="og:image"
+      content="<?php echo htmlspecialchars($og_image); ?>"
+    />
+    <meta
+      property="og:url"
+      content="<?php echo htmlspecialchars($og_url); ?>"
+    />
+    <meta property="og:type" content="article" />
+    <title><?php echo htmlspecialchars($og_title); ?></title>
+  </head>
+
+  <body>
+    <app-root></app-root>
+  </body>
 </html>

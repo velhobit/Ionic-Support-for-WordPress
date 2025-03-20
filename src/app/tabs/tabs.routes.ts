@@ -1,36 +1,43 @@
 import { Routes } from '@angular/router';
+import { CategoryPage } from '../pages/category/category.page';
+import { HomePage } from '../pages/home/home.page';
+import { PostPage } from '../pages/post/post.page';
 import { TabsPage } from './tabs.page';
 
 export const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadComponent: () =>
-          import('../tab1/tab1.page').then((m) => m.Tab1Page),
-      },
-      {
-        path: 'tab2',
-        loadComponent: () =>
-          import('../tab2/tab2.page').then((m) => m.Tab2Page),
-      },
-      {
-        path: 'tab3',
-        loadComponent: () =>
-          import('../tab3/tab3.page').then((m) => m.Tab3Page),
-      },
-      {
         path: '',
-        redirectTo: '/tabs/tab1',
+        component: HomePage,
+      },
+      {
+        path: 'home',
+        redirectTo: '/',
         pathMatch: 'full',
       },
+      {
+        path: 'post/:category/:slug',
+        component: PostPage,
+      },
+      {
+        path: 'category/:slug',
+        component: CategoryPage,
+      },
+      {
+        path: 'categories',
+        loadComponent: () =>
+          import('../pages/categories/categories.page').then(
+            (m) => m.CategoriesPage
+          ),
+      },
+      {
+        path: 'social',
+        loadComponent: () =>
+          import('../pages/social/social.page').then((m) => m.SocialPage),
+      },
     ],
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full',
   },
 ];

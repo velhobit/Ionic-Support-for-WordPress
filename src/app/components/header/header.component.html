@@ -1,0 +1,28 @@
+<ion-header mode="ios" [translucent]="true">
+  <ion-toolbar>
+    <ion-grid fixed="true">
+      <ion-row>
+        <ion-col size="auto" class="title" [routerLink]="'/'">
+          <img
+            [src]="
+              isDarkMode
+                ? 'assets/main-icon-inverse.webp'
+                : 'assets/main-icon.webp'
+            "
+            alt="VelhoBit"
+          />
+          <h1 class="os">{{ symbol }}</h1>
+        </ion-col>
+        <ion-col class="ion-hide-lg-down">
+          <ion-segment [value]="default">
+            <ng-template ngFor let-item [ngForOf]="mainMenu?.items">
+              <ion-segment-button [value]="item.name" (click)="goTo(item.url)">
+                <ion-label>{{ item.title }}</ion-label>
+              </ion-segment-button>
+            </ng-template>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
