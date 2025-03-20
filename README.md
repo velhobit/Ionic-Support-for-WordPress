@@ -2,6 +2,8 @@
 
 Este projeto de estudo demonstra como integrar eficientemente aplicações **Ionic com Angular**, utilizando o **WordPress como fonte de dados**. A combinação dessas tecnologias oferece uma solução completa e moderna para criar blogs, sites de notícias e aplicativos móveis com desempenho excepcional.
 
+[Exemplo](http://apple.velhobit.com.br).
+
 ---
 
 ## 💡 Por que esta abordagem é interessante?
