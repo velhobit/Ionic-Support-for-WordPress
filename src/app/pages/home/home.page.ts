@@ -145,8 +145,6 @@ export class HomePage implements OnInit {
   loadBanners() {
     this.wpService.getBanners('main-banners').subscribe((data) => {
       this.banners = data.banners;
-      console.log(data);
-      console.log(data.banners);
     });
   }
 
