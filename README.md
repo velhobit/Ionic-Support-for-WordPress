@@ -68,3 +68,12 @@ Este projeto utiliza principalmente APIs nativas do WordPress, mas alguns endpoi
 ---
 
 Com essa estrutura, você aproveita o melhor do WordPress como CMS robusto e o poder do Ionic/Angular para criar aplicações modernas e performáticas! 🚀
+
+## Próximos Recursos
+
+- Adicionar Retorno e Navegação
+- Adicionar Suporte Multidioma
+- Adicionar Serviço de Alertas
+- Adicionar Suporte de Estados Globais
+- Adicionar Suporte a CustomFields
+- Adicionar Suporte ao Woocommerce
