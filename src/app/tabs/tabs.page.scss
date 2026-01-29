@@ -5,3 +5,14 @@ ion-tabs {
     }
   }
 }
+
+ion-tab-bar {
+  max-width: calc(100vw - 1.72rem);
+  margin-left: 0.86rem;
+  transform: translateY(-0.86rem);
+  padding: 0.2rem 0;
+  border-radius: 6rem;
+  box-shadow:
+    0 0.6rem 1.6rem rgba(0, 0, 0, 0.1),
+    0 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
+}

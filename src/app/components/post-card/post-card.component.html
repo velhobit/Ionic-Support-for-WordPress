@@ -1,0 +1,45 @@
+@if (post) {
+  <ion-card class="ion-no-margin flex-vertical">
+    <ion-card-content
+      class="thumbnail ion-no-margin"
+      [routerLink]="['/post', post?.categories[0]?.slug, post?.slug]"
+      role="link"
+      tabindex="0"
+      [attr.aria-label]="'Open post: ' + post?.title"
+    >
+      <div class="img-container">
+        @if (post?.thumbnail?.url?.length) {
+          <div class="blurred">
+            <img [src]="post.thumbnail.url" />
+          </div>
+          <img [src]="post.thumbnail.url" [alt]="post.title" class="main" />
+        }
+      </div>
+    </ion-card-content>
+
+    <ion-card-header>
+      @if (post?.categories) {
+        <div>
+          @for (cat of post.categories; track cat) {
+            <ion-chip
+              color="primary"
+              [routerLink]="['/category', cat.slug]"
+              clickable
+              [attr.aria-label]="'Category: ' + cat.name"
+            >
+              {{ cat.name }}
+            </ion-chip>
+          }
+        </div>
+      }
+
+      <ion-card-title
+        [innerHTML]="post.title"
+        [routerLink]="['/post', post?.categories[0]?.slug, post?.slug]"
+        role="link"
+        tabindex="0"
+        [attr.aria-label]="'Open post: ' + post?.title"
+      ></ion-card-title>
+    </ion-card-header>
+  </ion-card>
+}

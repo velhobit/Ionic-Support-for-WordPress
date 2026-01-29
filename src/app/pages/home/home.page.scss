@@ -39,8 +39,10 @@ $border-spacing-mobile: 0.75rem;
       left: 0;
       top: 0;
       margin: 0;
-      font-size: 1.6rem;
-      color: white;
+      font-size: 1.24rem;
+      color: color(display-p3 1 1 1);
+      font-weight: bold;
+      letter-spacing: 1px;
 
       @media (max-width: 768px) {
         font-size: 1.1rem;

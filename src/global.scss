@@ -52,11 +52,43 @@
 Replace Global
 **/
 ion-card {
-  cursor: pointer;
   box-shadow: none;
   background: var(--ion-color-white);
   border-radius: 1.85em;
   transition: transform 0.2s ease-out;
+
+  ion-card-content {
+    cursor: pointer;
+    .img-container {
+      position: relative;
+    }
+
+    .blurred {
+      position: relative;
+      filter: blur(0.6rem);
+      border-radius: 0.68rem;
+      opacity: 0.86;
+      display: block;
+      mix-blend-mode: hard-light;
+      backdrop-filter: saturate(6);
+
+      @media (prefers-color-scheme: dark) {
+        filter: blur(0.86rem);
+        backdrop-filter: saturate(6) contrast(1.4);
+        opacity: 0.68;
+        mix-blend-mode: screen;
+      }
+    }
+    img {
+      &.main {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
 
   ion-card-header {
     padding-top: 0;
@@ -67,12 +99,14 @@ ion-card {
       margin-bottom: 0.36rem;
       line-height: 1rem;
       transform: translateY(-0.36rem);
+      cursor: pointer;
     }
 
     ion-card-subtitle {
       padding-top: 0.85em;
       font-size: 0.9em;
       font-weight: 300;
+      cursor: pointer;
     }
   }
 
@@ -87,6 +121,11 @@ ion-card {
     img {
       transform: scale(1.05);
       box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.1);
+    }
+
+    .blurred {
+      filter: blur(0.4rem);
+      opacity: 1;
     }
   }
 

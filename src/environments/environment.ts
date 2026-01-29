@@ -11,7 +11,7 @@ export const environment = {
   default_description:
     'Descubra dicas, truques e novidades sobre produtos e serviços da Apple. Fique por dentro de atualizações, tutoriais, soluções e as melhores práticas para otimizar o uso do seu iPhone, iPad, MacBook e mais.',
   default_image: 'http://localhost:8100/assets/favicon.png',
-  symbol: '',
+  symbol: '',
   social: [
     {
       name: '@designprogramacao',

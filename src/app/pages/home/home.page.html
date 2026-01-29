@@ -73,23 +73,32 @@
         *ngFor="let post of posts"
       >
         <article>
-          <ion-card
-            class="ion-no-margin flex-vertical"
-            [routerLink]="[
+          <ion-card class="ion-no-margin flex-vertical">
+            <ion-card-content
+              class="thumbnail ion-no-margin"
+              [routerLink]="[
               '/post',
               post?.categories[0]?.slug,
               post?.slug
             ]"
-            role="link"
-            tabindex="0"
-            [attr.aria-label]="'Open post: ' + post?.title"
-          >
-            <ion-card-content class="thumbnail ion-no-margin">
-              <img
-                *ngIf="post?.thumbnail?.url?.length"
-                [src]="post.thumbnail.url"
-                [alt]="post.title"
-              />
+              role="link"
+              tabindex="0"
+              [attr.aria-label]="'Open post: ' + post?.title"
+            >
+              <div class="img-container">
+                <div class="blurred">
+                  <img
+                    *ngIf="post?.thumbnail?.url?.length"
+                    [src]="post.thumbnail.url"
+                  />
+                </div>
+                <img
+                  *ngIf="post?.thumbnail?.url?.length"
+                  [src]="post.thumbnail.url"
+                  [alt]="post.title"
+                  class="main"
+                />
+              </div>
             </ion-card-content>
 
             <ion-card-header *ngIf="post?.categories">
@@ -106,7 +115,17 @@
                 }
               </div>
 
-              <ion-card-title [innerHTML]="post.title"></ion-card-title>
+              <ion-card-title
+                [innerHTML]="post.title"
+                [routerLink]="[
+                '/post',
+                post?.categories[0]?.slug,
+                post?.slug
+              ]"
+                role="link"
+                tabindex="0"
+                [attr.aria-label]="'Open post: ' + post?.title"
+              ></ion-card-title>
             </ion-card-header>
           </ion-card>
         </article>

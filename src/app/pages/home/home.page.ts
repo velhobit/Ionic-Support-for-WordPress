@@ -2,11 +2,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
   IonChip,
   IonCol,
   IonContent,
@@ -14,7 +9,7 @@ import {
   IonHeader,
   IonIcon,
   IonImg,
-    IonItem,
+  IonItem,
   IonLabel,
   IonList,
   IonRow,
@@ -32,6 +27,7 @@ import { HelperService } from 'src/app/services/helper.service';
 import { SchemaService } from 'src/app/services/schema.service';
 import { MetaService } from 'src/app/services/meta.service';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { PostCardComponent } from 'src/app/components/post-card/post-card.component';
 
 @Component({
   selector: 'app-home',
@@ -52,17 +48,13 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
     IonRow,
     IonCol,
     IonGrid,
-    IonCard,
-    IonCardContent,
-    IonCardTitle,
-    IonCardHeader,
-    IonCardSubtitle,
     IonSkeletonText,
     IonIcon,
     IonChip,
     IonImg,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PostCardComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
@@ -76,7 +68,7 @@ export class HomePage implements OnInit {
     private wpService: WordpressService,
     private helperService: HelperService,
     private schemaService: SchemaService,
-    private metaService: MetaService
+    private metaService: MetaService,
   ) {
     addIcons({ calendar });
 
@@ -95,14 +87,14 @@ export class HomePage implements OnInit {
       this.posts = data.posts.map((post: any) => {
         post.updated_date = this.helperService.lastDateRender(
           post.modified_date,
-          post.published_date
+          post.published_date,
         );
         this.loading = false;
         return {
           ...post,
           date_info: this.helperService.lastDateRender(
             post.modified,
-            post.date
+            post.date,
           ),
         };
       });
@@ -119,7 +111,7 @@ export class HomePage implements OnInit {
             ...post,
             thumbnail: thumbnail,
           };
-        })
+        }),
       );
     });
 
@@ -136,7 +128,7 @@ export class HomePage implements OnInit {
             ...post,
             categories_data: categories,
           };
-        })
+        }),
       );
     });
 
