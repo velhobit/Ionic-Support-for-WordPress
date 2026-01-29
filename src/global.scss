@@ -51,11 +51,19 @@
 /**
 Replace Global
 **/
+article.pre-card{
+  border-radius: 1.85em;
+  overflow: hidden;
+}
 ion-card {
   box-shadow: none;
   background: var(--ion-color-white);
   border-radius: 1.85em;
   transition: transform 0.2s ease-out;
+
+  ion-chip{
+    font-size: .65rem;
+  }
 
   ion-card-content {
     cursor: pointer;
@@ -67,19 +75,20 @@ ion-card {
       position: relative;
       filter: blur(0.6rem);
       border-radius: 0.68rem;
-      opacity: 0.86;
+      opacity: 0.76;
       display: block;
       mix-blend-mode: hard-light;
       backdrop-filter: saturate(6);
 
       @media (prefers-color-scheme: dark) {
-        filter: blur(0.86rem);
-        backdrop-filter: saturate(6) contrast(1.4);
-        opacity: 0.68;
-        mix-blend-mode: screen;
+        filter: blur(1.68rem);
+        backdrop-filter: saturate(4) contrast(0) brightness(4.5);
+        opacity: 0.9;
+        mix-blend-mode: hard-light;
       }
     }
     img {
+      display: block;
       &.main {
         position: absolute;
         left: 0;
@@ -141,6 +150,6 @@ ion-card {
 .thumbnail {
   border-radius: 0.85em;
   img {
-    border-radius: 0.85em;
+    border-radius: 0.70em;
   }
 }

@@ -22,7 +22,7 @@ export class WordpressService {
 */
 
   getPosts(page = 0, excludedCategories: number[] = []): Observable<any> {
-    return this.http.get(`${this.customBaseUrl}/posts/${page}/10`);
+    return this.http.get(`${this.customBaseUrl}/posts/${page}/12`);
   }
 
   getPostById(id: number): Observable<any> {
@@ -31,7 +31,7 @@ export class WordpressService {
 
   getPostsByCategory(category: string, page = 0): Observable<any> {
     return this.http.get(
-      `${this.customBaseUrl}/categories/${category}/posts/${page}/10`
+      `${this.customBaseUrl}/categories/${category}/posts/${page}/30`
     );
   }
 
