@@ -1,0 +1,30 @@
+<footer>
+  <ion-grid fixed="true">
+    <ion-row>
+      <ion-col size="12" size-md="6" class="title" [routerLink]="'/'">
+        <h4>{{ year }} - Portfólio de Rodrigo Portillo</h4>
+        <p>
+          Todas as marcas, logotipos e nomes comerciais exibidos neste site
+          pertencem a seus respectivos proprietários.
+        </p>
+      </ion-col>
+      <ion-col size="12" size-md="6">
+        <ul>
+          @for (s of social; track s) {
+            <li>
+              <a
+                [href]="s.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                [attr.aria-label]="s.name"
+              >
+                <i [attr.class]="s.icon" aria-hidden="true"></i>
+                <span>{{ s.name }}</span>
+              </a>
+            </li>
+          }
+        </ul>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</footer>

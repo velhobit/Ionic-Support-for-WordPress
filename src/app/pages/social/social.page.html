@@ -2,27 +2,31 @@
   <ion-grid fixed="true">
     <ion-row>
       <ion-col class="ion-padding-start">
-        <h2 class="ion-no-margin">Mídias Sociais</h2>
+        <h2 class="ion-no-margin">Social Media</h2>
       </ion-col>
     </ion-row>
+
     <ion-row>
       <ion-col>
-        <ion-list [inset]="true" lines="full" detail="true" *ngIf="social">
-          <ng-template ngFor let-item [ngForOf]="social">
-            <ion-item [button]="true" (click)="goTo(item.url)">
-              <i [attr.class]="item.icon" slot="start"></i>
+        <nav aria-label="Social media links">
+          <ion-list *ngIf="social?.length" inset="true" lines="full">
+            @for (item of social; track item) {
+            <ion-item
+              [href]="item.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              button
+              detail="true"
+              [attr.aria-label]="item.name"
+            >
+              <i [attr.class]="item.icon" slot="start" aria-hidden="true"></i>
+
               <ion-label>{{ item.name }}</ion-label>
             </ion-item>
-          </ng-template>
-        </ion-list>
+            }
+          </ion-list>
+        </nav>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-  integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>

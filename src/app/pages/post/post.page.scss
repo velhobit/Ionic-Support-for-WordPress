@@ -9,6 +9,10 @@
     display: block;
   }
 
+  .categories {
+    margin: 0.86rem 0;
+  }
+
   .content {
     ::ng-deep {
       h2 {
@@ -29,11 +33,15 @@
       }
       img,
       figure {
-        padding: 0;
-        margin: 0;
-        width: 100%;
+        width: 100vw;
+        max-width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
         height: auto;
-        border-radius: 5px;
+        display: block;
       }
 
       figure {

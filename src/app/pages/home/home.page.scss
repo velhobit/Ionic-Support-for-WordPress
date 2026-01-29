@@ -1,30 +1,66 @@
+$border-spacing: 1.6rem;
+$border-spacing-mobile: 0.75rem;
+
 .banners {
-  swiper-container {
-    overflow: hidden;
-    border-radius: 1em;
-    swiper-slide {
-      position: relative;
-      .title-container {
-        z-index: 1;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 50%;
-        backdrop-filter: blur(10px);
-        background: rgb(0, 0, 0);
-        background: linear-gradient(
-          0deg,
-          rgba(0, 0, 0, 0.5) 0%,
-          rgba(0, 0, 0, 0) 100%
-        );
-        border-radius: 0 0 1em 1em;
-        ion-title {
-          font-size: 1.2em;
-          text-shadow: 2px 2px 5px black;
-          color: white;
-        }
+  margin-top: 1rem;
+  position: relative;
+  border-radius: 1.3rem;
+  box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.1);
+
+  ion-img {
+    border-radius: inherit;
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  ion-img::part(image),
+  ion-img::part(img) {
+    border-radius: 1.3rem;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .content {
+    position: absolute;
+    left: $border-spacing;
+    right: $border-spacing;
+    bottom: $border-spacing;
+    top: $border-spacing;
+
+    @media (max-width: 768px) {
+      left: $border-spacing-mobile;
+      right: $border-spacing-mobile;
+      bottom: $border-spacing-mobile;
+      top: $border-spacing-mobile;
+    }
+
+    h1 {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 0;
+      font-size: 1.6rem;
+      color: white;
+
+      @media (max-width: 768px) {
+        font-size: 1.1rem;
       }
     }
   }
+  @media (max-width: 620px) {
+    margin-top: 0;
+    ion-img::part(image),
+    ion-img::part(img) {
+      width: 100vw;
+      margin-top: -3px;
+      margin-left: -4px;
+      border-radius: 0;
+    }
+  }
+}
+
+.about-me {
+  font-size: 0.96rem;
+  text-align: center;
+  line-height: 1.6rem;
 }

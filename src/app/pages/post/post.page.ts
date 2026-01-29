@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
+  IonChip,
   IonCol,
   IonContent,
   IonGrid,
@@ -13,13 +14,14 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { WordpressService } from 'src/app/services/wordpress.service';
 import { switchMap } from 'rxjs';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { SchemaService } from 'src/app/services/schema.service';
 import { MetaService } from 'src/app/services/meta.service';
 import { HelperService } from 'src/app/services/helper.service';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 @Component({
   selector: 'app-post',
@@ -39,6 +41,9 @@ import { HelperService } from 'src/app/services/helper.service';
     IonSkeletonText,
     IonThumbnail,
     HeaderComponent,
+    IonChip,
+    RouterLink,
+    FooterComponent,
   ],
 })
 export class PostPage implements OnInit {
@@ -52,7 +57,7 @@ export class PostPage implements OnInit {
     private schemaService: SchemaService,
     private metaService: MetaService,
     private sanitizer: DomSanitizer,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -62,7 +67,7 @@ export class PostPage implements OnInit {
           const category = params['category'];
           const slug = params['slug'];
           return this.wordpressService.getPostByCategoryAndSlug(category, slug);
-        })
+        }),
       )
       .subscribe((post) => {
         if (post) {
@@ -78,10 +83,10 @@ export class PostPage implements OnInit {
             modifiedDate: post.modified_date,
           });
           post.publishedDateRendered = this.helperService.dateRender(
-            post.published_date
+            post.published_date,
           );
           post.modifiedDateRendered = this.helperService.dateRender(
-            post.modified_date
+            post.modified_date,
           );
           this.post = post;
           this.post.content = this.getSafeHtml(post.content);
@@ -92,7 +97,7 @@ export class PostPage implements OnInit {
 
   getSafeHtml(content: string) {
     const youtubeRegex =
-    /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:shorts\/|watch\?v=|(?:v|e(?:mbed)?)\/))([a-zA-Z0-9_-]+)(?:[?&][^"]*)?/g;
+      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:shorts\/|watch\?v=|(?:v|e(?:mbed)?)\/))([a-zA-Z0-9_-]+)(?:[?&][^"]*)?/g;
 
     content = content?.replace(
       /(<div class="wp-block-embed__wrapper">)(.*?)(<\/div>)/gs,
@@ -106,7 +111,7 @@ export class PostPage implements OnInit {
           }
         }
         return match; // Se não houver correspondência, retorna o match original
-      }
+      },
     );
 
     return this.sanitizer.bypassSecurityTrustHtml(content);
@@ -122,7 +127,7 @@ export class PostPage implements OnInit {
         const newScript = document.createElement('script');
 
         Array.from(originalScript.attributes).forEach((attr: any) =>
-          newScript.setAttribute(attr.name, attr.value)
+          newScript.setAttribute(attr.name, attr.value),
         );
         if (originalScript.textContent) {
           newScript.textContent = originalScript.textContent;

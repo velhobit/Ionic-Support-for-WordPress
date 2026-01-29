@@ -1,118 +1,118 @@
 <ion-content mode="ios" [fullscreen]="true">
-  <ion-grid fixed="true">
+  <ion-grid fixed="true" role="main">
     <ion-row>
-      <!--banners-->
-      <ion-col size="12" class="ion-padding banners">
-        <swiper-container [navigation]="true" [autoplay]="true">
-          <swiper-slide
-            *ngFor="let banner of banners"
-            [routerLink]="banner.link_url"
-          >
-            <ion-img
-              [src]="banner.banner.url"
-              [title]="banner.banner.title"
-              [alt]="banner.banner.alt"
-            ></ion-img>
-            <div class="title-container">
-              <ion-title>{{banner.banner.title}}</ion-title>
-            </div>
-          </swiper-slide>
-        </swiper-container>
+      <!-- Banner -->
+      <ion-col size="12" class="ion-no-padding banners">
+        <header>
+          <ion-img
+            src="/assets/velhobit-portfolio.jpg"
+            alt="Portfolio of Rodrigo Portillo"
+          ></ion-img>
+
+          <div class="content">
+            <h1>
+              Portfolio<br />
+              <span>Rodrigo Portillo</span>
+            </h1>
+          </div>
+        </header>
       </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-col class="ion-padding-start">
-        <h2 class="ion-no-margin">Últimas Atualizações</h2>
+      <ion-col size="12" class="ion-padding">
+        <section aria-labelledby="about-title">
+          <h2 id="about-title" class="about-me">
+            I design and build digital products end to end. With 20 years of
+            experience across UX, design, frontend, backend, and infrastructure,
+            I focus on transforming real problems into functional, elegant
+            solutions. My background in fine arts and software development lets
+            me bridge aesthetics and engineering with ease.
+          </h2>
+        </section>
       </ion-col>
     </ion-row>
-    <ion-row *ngIf="loading">
+
+    <!-- Loading state -->
+    <ion-row *ngIf="loading" aria-busy="true">
       <ion-col
         class="ion-padding flex-vertical"
         size="6"
         size-md="6"
         size-lg="4"
-        size-xl="3"
       >
-        <ion-card class="ion-no-margin flex-vertical">
+        <ion-card class="ion-no-margin flex-vertical" aria-hidden="true">
           <ion-card-content class="thumbnail ion-no-margin">
             <ion-skeleton-text
               [animated]="true"
               style="width: 100%; height: 100px"
             ></ion-skeleton-text>
           </ion-card-content>
-          <ion-card-header class="flex">
-            <div>
-              <ion-skeleton-text
-                [animated]="true"
-                style="width: 50%; height: 0.85"
-              ></ion-skeleton-text>
-            </div>
-            <ion-card-subtitle>
-              <ion-skeleton-text
-                [animated]="true"
-                style="width: 50%; height: 1em"
-              ></ion-skeleton-text
-            ></ion-card-subtitle>
-            <div class="flex"></div>
-            <ion-card-title>
-              <ion-skeleton-text
-                [animated]="true"
-                style="width: 100%; height: 1em"
-              ></ion-skeleton-text>
-              <ion-skeleton-text
-                [animated]="true"
-                style="width: 50%; height: 1em"
-              ></ion-skeleton-text>
-            </ion-card-title>
+
+          <ion-card-header>
+            <ion-skeleton-text
+              [animated]="true"
+              style="width: 50%; height: 1em"
+            ></ion-skeleton-text>
+            <ion-skeleton-text
+              [animated]="true"
+              style="width: 100%; height: 1em"
+            ></ion-skeleton-text>
           </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
+
+    <!-- Posts -->
     <ion-row *ngIf="!loading">
       <ion-col
         class="ion-padding flex-vertical"
         size="12"
         size-md="6"
         size-lg="4"
-        size-xl="3"
         *ngFor="let post of posts"
       >
-        <ion-card
-          class="ion-no-margin flex-vertical"
-          [routerLink]="'post/' + post?.categories[0]?.slug + '/' + post?.slug"
-          aria-label="Navegar para o post {{ post?.title }}"
-        >
-          <ion-card-content class="thumbnail ion-no-margin">
-            <ion-skeleton-text
-              *ngIf="!post?.title?.length"
-              [animated]="true"
-              style="width: 100%; height: 100px"
-            ></ion-skeleton-text>
-            <img
-              *ngIf="post?.thumbnail?.url?.length"
-              [src]="post.thumbnail?.url"
-              [alt]="post.title"
-            />
-          </ion-card-content>
-          <ion-card-header class="flex" *ngIf="post?.categories">
-            <div *ngIf="post?.categories">
-              <a
-                class="category"
-                role="button"
-                *ngFor="let cat of post?.categories"
-                [href]="'category/' + cat?.slug"
-                >{{ cat?.name }}</a
-              >
-            </div>
-            <ion-card-subtitle *ngIf="post?.date_info"
-              ><ion-icon name="calendar"></ion-icon> {{ post.updated_date
-              }}</ion-card-subtitle
-            >
-            <div class="flex"></div>
-            <ion-card-title [innerHTML]="post.title"></ion-card-title>
-          </ion-card-header>
-        </ion-card>
+        <article>
+          <ion-card
+            class="ion-no-margin flex-vertical"
+            [routerLink]="[
+              '/post',
+              post?.categories[0]?.slug,
+              post?.slug
+            ]"
+            role="link"
+            tabindex="0"
+            [attr.aria-label]="'Open post: ' + post?.title"
+          >
+            <ion-card-content class="thumbnail ion-no-margin">
+              <img
+                *ngIf="post?.thumbnail?.url?.length"
+                [src]="post.thumbnail.url"
+                [alt]="post.title"
+              />
+            </ion-card-content>
+
+            <ion-card-header *ngIf="post?.categories">
+              <div>
+                @for (cat of post.categories; track cat) {
+                <ion-chip
+                  color="primary"
+                  [routerLink]="['/category', cat.slug]"
+                  clickable
+                  [attr.aria-label]="'Category: ' + cat.name"
+                >
+                  {{ cat.name }}
+                </ion-chip>
+                }
+              </div>
+
+              <ion-card-title [innerHTML]="post.title"></ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </article>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <app-footer></app-footer>
 </ion-content>

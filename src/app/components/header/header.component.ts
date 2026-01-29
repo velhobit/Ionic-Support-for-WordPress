@@ -16,7 +16,12 @@ import {
 } from '@ionic/angular/standalone';
 import { WordpressService } from 'src/app/services/wordpress.service';
 import { environment } from 'src/environments/environment';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterModule,
+} from '@angular/router';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -38,6 +43,7 @@ import { switchMap } from 'rxjs';
     IonSegment,
     IonSegmentButton,
     IonLabel,
+    RouterLink,
   ],
 })
 export class HeaderComponent implements OnInit {
@@ -46,13 +52,13 @@ export class HeaderComponent implements OnInit {
   currentCategory: string = '';
   default: any;
   isDarkMode: boolean = false;
-  symbol: string = "";
+  symbol: string = '';
 
   constructor(
     private wpService: WordpressService,
     private router: Router,
     private route: ActivatedRoute,
-    private platform: Platform
+    private platform: Platform,
   ) {}
 
   ngOnInit() {
@@ -65,7 +71,7 @@ export class HeaderComponent implements OnInit {
       next: (data) => {
         this.menus = data;
         this.mainMenu = data.find(
-          (menu: any) => menu.name.toLowerCase() === 'main'
+          (menu: any) => menu.name.toLowerCase() === 'main',
         );
         if (this.mainMenu && this.mainMenu.items) {
           this.mainMenu.items = this.mainMenu.items.map((item: any) => {

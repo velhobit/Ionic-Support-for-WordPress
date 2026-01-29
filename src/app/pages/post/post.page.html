@@ -1,55 +1,92 @@
 <ion-content [fullscreen]="true">
-  <ion-grid fixed="true" class="post">
+  <ion-grid fixed="true" class="post" role="main">
     <ion-row>
       <ion-col>
-        <header>
-          <h1 *ngIf="post">{{post?.title}}</h1>
-          <h1 *ngIf="!post">
-            <ion-skeleton-text
-              [animated]="true"
-              style="width: 100%; height: 36px"
-            ></ion-skeleton-text>
-            <ion-skeleton-text
-              [animated]="true"
-              style="width: 50%; height: 36px"
-            ></ion-skeleton-text>
-          </h1>
-          <time *ngIf="!post" class="ion-margin-bottom">
-            <ion-skeleton-text
-              [animated]="true"
-              style="width: 35%; height: 36px"
-            ></ion-skeleton-text>
-          </time>
-          <time
-            [attr.datetime]="post.published_date"
-            *ngIf="post?.publishedDateRendered && post?.publishedDateRendered != undefined"
-            class="ion-margin-bottom"
+        <article>
+          <header>
+            <!-- Title -->
+            <h1 *ngIf="post">{{ post.title }}</h1>
+
+            <div *ngIf="!post" aria-hidden="true">
+              <ion-skeleton-text
+                [animated]="true"
+                style="width: 100%; height: 36px"
+              ></ion-skeleton-text>
+              <ion-skeleton-text
+                [animated]="true"
+                style="width: 50%; height: 36px"
+              ></ion-skeleton-text>
+            </div>
+
+            <!-- Published date -->
+
+            <time *ngIf="!post" class="ion-margin-bottom" aria-hidden="true">
+              <ion-skeleton-text
+                [animated]="true"
+                style="width: 35%; height: 36px"
+              ></ion-skeleton-text>
+            </time>
+
+            <!-- Categories -->
+            <nav
+              *ngIf="post?.categories"
+              class="categories"
+              aria-label="Post categories"
+            >
+              @for (cat of post.categories; track cat) {
+              <ion-chip
+                color="primary"
+                [routerLink]="['/category', cat.slug]"
+                clickable
+                [attr.aria-label]="'Category: ' + cat.name"
+              >
+                {{ cat.name }}
+              </ion-chip>
+              }
+            </nav>
+          </header>
+
+          <!-- Post content -->
+          <section
+            *ngIf="post"
+            class="content"
+            id="postContent"
+            [innerHTML]="post.content"
+          ></section>
+
+          <!-- Loading content -->
+          <section
+            *ngIf="!post"
+            class="content"
+            aria-busy="true"
+            aria-live="polite"
           >
-            {{post?.publishedDateRendered}}
-          </time>
-        </header>
-        <div class="content" id="postContent" [innerHTML]="post?.content"></div>
-        <div class="content" *ngIf="!post">
-          <p *ngFor="let a of [0,0,0]">
+            <p *ngFor="let _ of [0,0,0]" aria-hidden="true">
+              <ion-skeleton-text
+                *ngFor="let _ of [0,0,0,0]"
+                [animated]="true"
+                style="height: 16px"
+              ></ion-skeleton-text>
+            </p>
+
             <ion-skeleton-text
               [animated]="true"
-              style="height: 16px"
-              *ngFor="let a of [0,0,0,0]"
-            >
-            </ion-skeleton-text>
-          </p>
-          <ion-skeleton-text [animated]="true" style="height: 200px">
-          </ion-skeleton-text>
-          <p *ngFor="let a of [0,0,0]">
-            <ion-skeleton-text
-              [animated]="true"
-              style="height: 16px"
-              *ngFor="let a of [0,0,0,0]"
-            >
-            </ion-skeleton-text>
-          </p>
-        </div>
+              style="height: 200px"
+              aria-hidden="true"
+            ></ion-skeleton-text>
+
+            <p *ngFor="let _ of [0,0,0]" aria-hidden="true">
+              <ion-skeleton-text
+                *ngFor="let _ of [0,0,0,0]"
+                [animated]="true"
+                style="height: 16px"
+              ></ion-skeleton-text>
+            </p>
+          </section>
+        </article>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <app-footer></app-footer>
 </ion-content>

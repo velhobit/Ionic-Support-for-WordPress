@@ -27,6 +27,7 @@ import { WordpressService } from 'src/app/services/wordpress.service';
 import { HelperService } from 'src/app/services/helper.service';
 import { addIcons } from 'ionicons';
 import { calendar } from 'ionicons/icons';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 @Component({
   selector: 'app-category',
@@ -56,6 +57,7 @@ import { calendar } from 'ionicons/icons';
     IonIcon,
     IonChip,
     HeaderComponent,
+    FooterComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

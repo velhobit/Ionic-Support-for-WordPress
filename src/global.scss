@@ -10,20 +10,20 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
+@import '@ionic/angular/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
+@import '@ionic/angular/css/normalize.css';
+@import '@ionic/angular/css/structure.css';
+@import '@ionic/angular/css/typography.css';
+@import '@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
+@import '@ionic/angular/css/padding.css';
+@import '@ionic/angular/css/float-elements.css';
+@import '@ionic/angular/css/text-alignment.css';
+@import '@ionic/angular/css/text-transformation.css';
+@import '@ionic/angular/css/flex-utils.css';
 
 /**
  * Ionic Dark Mode
@@ -34,7 +34,7 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+@import '@ionic/angular/css/palettes/dark.system.css';
 
 /**
 * helpers
@@ -56,11 +56,19 @@ ion-card {
   box-shadow: none;
   background: var(--ion-color-white);
   border-radius: 1.85em;
+  transition: transform 0.2s ease-out;
+
   ion-card-header {
     padding-top: 0;
+
     ion-card-title {
-      font-size: 1.12em;
+      font-size: 1.42em;
+      font-weight: 300;
+      margin-bottom: 0.36rem;
+      line-height: 1rem;
+      transform: translateY(-0.36rem);
     }
+
     ion-card-subtitle {
       padding-top: 0.85em;
       font-size: 0.9em;
@@ -68,9 +76,23 @@ ion-card {
     }
   }
 
+  img {
+    transition:
+      transform 0.3s ease-out,
+      box-shadow 0.25s ease-out;
+  }
+  &:hover {
+    transform: scale(1.02);
+
+    img {
+      transform: scale(1.05);
+      box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.1);
+    }
+  }
+
   .category {
     font-size: 0.85em;
-    padding-right: 0.3em;
+    padding-right: 0;
     margin-top: 0;
     margin-bottom: 0;
     display: inline-block;

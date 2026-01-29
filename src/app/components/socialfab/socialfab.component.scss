@@ -1,0 +1,33 @@
+.fab-footer {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  left: auto;
+  padding: 0.64rem 0.86rem;
+  border-radius: 6rem;
+  box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0.68rem);
+  background-color: color-mix(in srgb, var(--ion-color-white) 76%, transparent);
+  z-index: 100000;
+
+  display: flex;
+  gap: 0.86rem;
+
+  a {
+    display: block;
+    color: var(--ion-color-dark-shade);
+    font-size: 1.2rem;
+    :hover {
+      color: var(--ion-color-primary);
+    }
+  }
+
+  @media (max-width: 992px) {
+    bottom: auto;
+    top: 0.64rem;
+    right: 0.36rem;
+    box-shadow: none;
+    backdrop-filter: none;
+    background-color: transparent;
+  }
+}

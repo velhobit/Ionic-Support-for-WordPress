@@ -13,7 +13,8 @@ import {
   IonGrid,
   IonHeader,
   IonIcon,
-  IonItem,
+  IonImg,
+    IonItem,
   IonLabel,
   IonList,
   IonRow,
@@ -30,6 +31,7 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
 import { HelperService } from 'src/app/services/helper.service';
 import { SchemaService } from 'src/app/services/schema.service';
 import { MetaService } from 'src/app/services/meta.service';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 @Component({
   selector: 'app-home',
@@ -58,7 +60,9 @@ import { MetaService } from 'src/app/services/meta.service';
     IonSkeletonText,
     IonIcon,
     IonChip,
+    IonImg,
     HeaderComponent,
+    FooterComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
