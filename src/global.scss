@@ -36,6 +36,8 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
 
+$max-width: 1720px;
+
 /**
 * helpers
 **/
@@ -51,7 +53,7 @@
 /**
 Replace Global
 **/
-article.pre-card{
+article.pre-card {
   border-radius: 1.85em;
   overflow: hidden;
 }
@@ -61,8 +63,8 @@ ion-card {
   border-radius: 1.85em;
   transition: transform 0.2s ease-out;
 
-  ion-chip{
-    font-size: .65rem;
+  ion-chip {
+    font-size: 0.65rem;
   }
 
   ion-card-content {
@@ -150,6 +152,36 @@ ion-card {
 .thumbnail {
   border-radius: 0.85em;
   img {
-    border-radius: 0.70em;
+    border-radius: 0.7em;
+  }
+}
+
+@media (min-aspect-ratio: 21/9) {
+  ion-grid {
+    max-width: $max-width;
+  }
+
+  .post {
+    .content {
+      img {
+        max-width: $max-width !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        position: inherit !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .wp-block-video {
+        display: flex !important;
+        justify-content: center;
+
+        video {
+          max-width: $max-width !important;
+        }
+      }
+    }
   }
 }
